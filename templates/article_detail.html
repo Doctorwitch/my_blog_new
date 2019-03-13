@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}好好学习，天天向上{% endblock title %}
+
+{% block js %}
+<link rel="stylesheet" type="text/css" href="{% static 'plugin/wangEditor/css/wangEditor.min.css' %}">
+
+{% endblock js %}
+
+{% block nav %}
+<nav class="breadcrumb">
+    <div class="container"><em class="Hui-iconfont"></em> <a href="/" class="c-primary">首页</a> <span
+            class="c-gray en">&gt;</span> <span class="c-gray">{{ article.get_column_display }}</span> <span class="c-gray en">&gt;</span><span class="c-gray">{{ article.title }}</span>
+    </div>
+</nav>
+{% endblock nav %}
+
+{% block left %}
+<div class="col-lg-9 col-md-9 w_main_left">
+    <div class="panel panel-default  mb-20">
+        <div class="panel-body pt-10 pb-10">
+            <h2 class="c_titile" id="article_title">{{ article.title }}</h2>
+            <h2 id="article_id" style="display: none">{{ article.id }}</h2>
+            <p class="box_c"><span class="d_time">发布时间：{{ article.creat_time }}</span><span>编辑：
+                <a href="mailto:wechat1013100541@gmail.com">{{ article.auther }}</a></span><span>阅读{{ article.read_times }}</span></p>
+            <ul class="infos">
+                {% autoescape off %}
+                    {{ article.content }}
+                {% endautoescape %}
+            </ul>
+
+        </div>
+    </div>
+
+
+</div>
+{% endblock left%}
+
+{% block right %}
+<div class="col-lg-3 col-md-3">
+    <!--热门推荐-->
+    <div class="bg-fff box-shadow radius mb-20">
+        <div class="tab-category">
+            <a href=""><strong>热门推荐</strong></a>
+        </div>
+        <div class="tab-category-item">
+            <ul class="index_recd">
+                {% for h in hot %}
+                <li>
+                    <a href="/article/{{ h.id }}">{{ h.title }}</a>
+                    <p class="hits"><i class="Hui-iconfont" title="点击量">&#xe622;</i>{{ h.read_times }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!--图片-->
+    <div class="bg-fff box-shadow radius mb-20">
+        <div class="tab-category">
+            <a href=""><strong>扫我关注</strong></a>
+        </div>
+        <div class="tab-category-item">
+            <img data-original="/static/img/QRcode.png" class="img-responsive lazyload" alt="响应式图片">
+        </div>
+    </div>
+
+</div>
+{% endblock right %}
+
+
+
+{% block bottom_js %}
+<script type="text/javascript" src="{% static 'plugin/wangEditor/js/wangEditor.min.js' %}"></script>
+{% endblock bottom_js %}
+
+{% block file_js %}
+<script type="text/javascript">
+    $(function () {
+        $("img.lazyload").lazyload({failurelimit: 3});
+
+        wangEditor.config.printLog = false;
+        var editor1 = new wangEditor('textarea1');
+        editor1.config.menus = ['insertcode', 'quote', 'bold', '|', 'img', 'emotion', '|', 'undo', 'fullscreen'];
+        editor1.config.emotions = {
+            'default': {title: '老王表情', data: 'static/plugin/wangEditor/emotions1.data'},
+            'default2': {title: '老王心情', data: 'static/plugin/wangEditor/emotions3.data'},
+            'default3': {title: '顶一顶', data: 'static/plugin/wangEditor/emotions2.data'}
+        };
+        editor1.create();
+
+        //show reply
+        $(".hf").click(function () {
+            pId = $(this).attr("name");
+            $(this).parents(".commentList").find(".cancelReply").trigger("click");
+            $(this).parent(".comment-body").append($(".comment").clone(true));
+            $(this).parent(".comment-body").find(".comment").removeClass("hidden");
+            $(this).hide();
+        });
+        //cancel reply
+        $(".cancelReply").on('click', function () {
+            $(this).parents(".comment-body").find(".hf").show();
+            $(this).parents(".comment-body").find(".comment").remove();
+        });
+    });
+
+</script>
+<script>
+    $(function () {
+        var txt = $('#textarea1').attr('value');
+        var title = $('#article_title').text();
+        alert(txt);
+        // ba绑定ajax的click事件
+        $('#send_comment').click(function () {
+            $.ajax({
+                'url': '/article/comment',
+                'type': 'get',
+                'dataType': 'json',
+                'data': {'txt': txt, 'title': title}
+            }).success(function (data) {
+                // 进行处理
+                alert(data.msg)
+            })
+        })
+    })
+</script>
+{% endblock file_js %}
+

@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+{% load filters %}
+<head>
+<title>北方的个人博客 — 一个站在python开发之路上的草根程序员</title>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="keywords" content="个人博客,张洋个人博客,个人博客系统,北方博客,北方，张洋">
+<meta name="description" content="北方的博客系统，一个站在python开发之路上的草根程序员。">
+<LINK rel="Bookmark" href="favicon.ico" >
+<LINK rel="Shortcut Icon" href="favicon.ico" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/staticRes/js/html5shiv.js"></script>
+<script type="text/javascript" src="/staticRes/js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="/static/plugin/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/plugin/Hui-iconfont/1.0.8/iconfont.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/common.css" />
+<link rel="stylesheet" type="text/css" href="/static/plugin/pifu/pifu.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/timeline.css" />
+<!--[if lt IE 9]>
+<link href="/staticRes/lib/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } function showSide(){$('.navbar-nav').toggle();}</script>
+</head>
+<body>
+<header class="navbar-wrapper">
+    <div class="navbar navbar-fixed-top">
+        <div class="container cl">
+            <a class="navbar-logo hidden-xs" href="/index">
+                <img class="logo" src="/static/img/timg.gif" alt="北方在线" />
+            </a>
+            <a class="logo navbar-logo-m visible-xs" href="/index">北方博客</a>
+            <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:void(0);" onclick="showSide();">&#xe667;</a>
+            <nav class="nav navbar-nav nav-collapse w_menu" role="navigation">
+                <ul class="cl">
+                    <li class="active"> <a href="/index" data-hover="北方在线">北方在线</a> </li>
+                    <li> <a href="/about" data-hover="关于我">关于我</a> </li>
+                    <li> <a href="/mood" data-hover="碎言碎语">碎言碎语</a> </li>
+                    <li><a href="/article" data-hover="学无止尽">学无止尽</a></li>
+                    <li> <a href="/board" data-hover="留言板">留言板</a> </li>
+                    <li> <a href="#" data-hover="小嘿屋">小嘿屋</a> </li>
+                </ul>
+            </nav>
+            <nav class="navbar-nav navbar-userbar hidden-xs hidden-sm " style="top: 0;">
+                <ul class="cl">
+                    <li class="userInfo dropDown dropDown_hover">
+                            <!--<a href="javascript:;" ><img class="avatar radius" src="img/40.jpg" alt="丶似浅 "></a>
+                            <ul class="dropDown-menu menu radius box-shadow">
+                                <li><a href="/app/loginOut">退出</a></li>
+                            </ul>-->
+                            <a href="/app/qq" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" ><img class="avatar size-S" src="/static/img/qq.jpg" title="登入">登入</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!--导航条-->
+<nav class="breadcrumb">
+    <div class="container"><i class="Hui-iconfont">&#xe67f;</i> <a href="index.html" class="c-primary">首页</a> <span class="c-gray en">&gt;</span> <span class="c-gray">碎言碎语</span></div>
+</nav>
+
+<section class="container mt-20">
+    <div class="container-fluid">
+        <div class="timeline">
+        	
+{#					<div class="cd-timeline-block">#}
+{#					    <div class="cd-timeline-img cd-picture">#}
+{#					        <img src="/static/css/timeline/cd-icon-location.svg" alt="position">#}
+{#					    </div>#}
+{#					    <div class="cd-timeline-content">#}
+{#					        <h4>前端网页编写</h4>#}
+{#					        <p>学习Django7天了，是时候实践一下喽，今天开始编写一个前端页面，试试自己的网站怎么样，下一次更新是啥时候呢？自己也不晓得，不过应该快了，毕竟还是要恰饭的嘛！</p>#}
+{#					        <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>#}
+{#					        <span class="cd-date">2019年2月13日</span>#}
+{#					    </div>#}
+{#					</div>#}
+{#					<div class="cd-timeline-block">#}
+{#					    <div class="cd-timeline-img cd-picture">#}
+{#					        <img src="/static/css/timeline/cd-icon-location.svg" alt="position">#}
+{#					    </div>#}
+{#					    <div class="cd-timeline-content">#}
+{#					        <h4>python学习</h4>#}
+{#					        <p>还是果断地辞掉了盛初的工作，虽然公司氛围很好，但是工作内容不是自己喜欢的，不想耽误自己也不想耽误别人。很喜欢一句话，“不要假装努力，结局不会陪你演戏”，与君共勉，加油！</p>#}
+{#					        <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>#}
+{#					        <span class="cd-date">2019年2月6日</span>#}
+{#					    </div>#}
+{#					</div>#}
+            <ul>
+                {% for mood in moods %}
+                    {% if mood.id|mod %}
+
+                            <div class="cd-timeline-block">
+                                <div class="cd-timeline-img cd-picture">
+                                    <img src="/static/css/timeline/cd-icon-location.svg" alt="position">
+                                </div>
+                                <div class="cd-timeline-content">
+                                    <h4>{{ mood.mood_title }}</h4>
+                                    <p>{{ mood.mood_content }}</p>
+                                    <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
+                                    <span class="cd-date">{{ mood.mood_time }}</span>
+                                </div>
+                            </div>
+
+                    {% else %}
+
+                            <div class="cd-timeline-block">
+                                <div class="cd-timeline-img cd-picture">
+                                    <img src="/static/css/timeline/cd-icon-location.svg" alt="position">
+                                </div>
+                                <div class="cd-timeline-content">
+                                    <h4>{{ mood.mood_title }}</h4>
+                                    <p>{{ mood.mood_content }}</p>
+                                    <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
+                                    <span class="cd-date">{{ mood.mood_time }}</span>
+                                </div>
+                            </div>
+
+                    {% endif %}
+                {% endfor %}
+            </ul>
+					
+					
+        </div>
+    </div>
+
+</section>
+<footer class="footer mt-20">
+    <div class="container-fluid" id="foot">
+        <p>Copyright &copy; 2016-2017 www.wfyvv.com <br>
+            <a href="#" target="_blank">皖ICP备17002922号</a>
+        </p>
+    </div>
+</footer>
+<script type="text/javascript" src="/static/plugin/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="/static/plugin/layer/3.0/layer.js"></script>
+<script type="text/javascript" src="/static/plugin/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="/static/plugin/pifu/pifu.js"></script>
+<script type="text/javascript" src="/static/js/common.js"></script>
+<script> $(function(){ $(window).on("scroll",backToTopFun); backToTopFun(); }); </script>
+<script>
+    $(function () {
+        //on scolling, show/animate timeline blocks when enter the viewport
+        $(window).on('scroll', function () {
+            $('.cd-timeline-block').each(function () {
+                if ($(this).offset().top <= $(window).scrollTop() + $(window).height() * 0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden')) {
+                    $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+                }
+                if ($(window).scrollTop() - $(this).offset().top > 0) {
+                    $(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden').removeClass('bounce-in');
+                }
+                
+            });
+           $('.cd-timeline-block').each(function(){
+                if($(this).offset().top < $(window).scrollTop()+$(window).height()*0.75) {
+                    $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden');
+                }
+            });
+        });
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}是不是应该来了解下。。。{% endblock title %}
+
+{% block js %}{% endblock js %}
+
+
+
+{% block nav %}
+{% endblock nav %}
+
+
+<section class="container pt-20">
+    {% block left %}
+    <div class="col-sm-9 col-md-9">
+        <div class="about">
+            <h2>Just about me</h2>
+            <ul style="font-size: 14px;">
+                <p>一枚正在努力进步的PythonWeb程序员。专长领域为Web、服务器端开发，目前正在向全栈工程师进发。。。</p>
+                <p>1996年出生的我，22岁半路出家写程序，每天进步一点儿，希望某天能够和众大佬一起，做出体验感最棒的网页程序。。。</p>
+                <p>时间紧促，前端代码就照搬前辈的啦！大家不要介意QAQ，我也是会做！等我做出了满意的网页模板也会开源给小伙伴们使用哒！</p>
+            </ul>
+            <h2>About my blog</h2>
+            <ul style="font-size: 14px;">
+                <p>博客功能尚未完善，神秘小嘿屋仅个人使用，以后逐渐开放给所有人，目前内容未整理，内容你懂得，嘿。嘿嘿嘿。。。</p>
+                <p>本站定位为IT技术博客站，博客内容主要涉及编程语言、前端开发、服务端开发及一些热门技术等方面，同时分享实用的开发资料。</p>
+            </ul>
+            <h2>About server</h2>
+            <ul style="font-size: 14px;">
+                <p>服务器：阿里云服务器</p>
+                <p>域  名：doctorwitch.cn 注册于2019年02月13日</p>
+                <p>python版本：3.4.3</p>
+                <p>Django版本：1.9.4</p>
+                <p>MySQl版本：5.7.25</p>
+                <p>上线时间：2019年2月16日</p>
+                <p>源码地址：</p>
+            </ul>
+        </div>
+    </div>
+    {% endblock left %}
+
+    {% block right %}
+    <div class="col-sm-3 col-md-3">
+        <div class="bg-fff box-shadow radius mb-20">
+            <div class="tab-category">
+                <a href=""><strong>Contact  me</strong></a>
+            </div>
+            <div class="tab-category-item">
+                <ul class="index_recd">
+                    <li class="index_recd_item"><img src="{% static 'img/photo1.png' %}" alt="靓照" style="width: 100%;"></li>
+                    <li class="index_recd_item"><i class="Hui-iconfont">&#xe653;</i>姓名：张洋</li>
+                    <li class="index_recd_item"><i class="Hui-iconfont">&#xe70d;</i>职业：PythonWeb开发</li>
+                    <li class="index_recd_item"><i class="Hui-iconfont">&#xe63b;</i>邮箱：<a href="mailto:wechat1013100541@gmail.com">wechat1013100541@Gmail.com</a></li>
+                    <li class="index_recd_item"><i class="Hui-iconfont">&#xe67b;</i>QQ：1013100541</li>
+                    <li class="index_recd_item"><i class="Hui-iconfont">&#xe6d1;</i>git：</li>
+                    <li class="index_recd_item"><i class="Hui-iconfont">&#xe6d3;</i>个人介绍：</li><p>工作可以在网上找，但是恋爱不能在网上谈，我们要着眼现实，能摸得到看得着的才有未来，而不是在虚拟的网络世界宣泄自己。如果你问我网恋吗，上面的话当我没说，加我！</p>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endblock right %}
+</section>
+
+{% block comment_con %}
+{% endblock comment_con %}
+
+{% block bottom_js %}
+{% endblock bottom_js %}
+
+{% block file_js %}
+{% endblock file_js %}
+
+

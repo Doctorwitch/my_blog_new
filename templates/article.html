@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load filters %}
+{% load staticfiles %}
+{% block title %}好好学习，天天向上{% endblock title %}
+
+{% block js %}{% endblock js %}
+
+{% block nav %}
+<nav class="breadcrumb">
+    <div class="container">
+        <i class="Hui-iconfont">&#xe67f;</i><a href="/" class="c-primary">首页</a>
+        <span class="c-gray en">&gt;</span> <a href="article.html" class="c-primary">学无止尽</a>
+        <span class="c-gray en">&gt;</span> <span class="c-gray"><i class="Hui-iconfont">&#xe64b;</i> nginx</span>
+    </div>
+</nav>
+{% endblock nav %}
+
+{% block left %}
+  <div class="col-sm-9 col-md-9 mt-20">
+      {% for a in article %}
+
+			<ul class="index_arc">
+                {% if a.id|mod %}
+				<li class="index_arc_item">
+					<a href="/article/{{ a.id }}" class="pic">
+						<img class="lazyload" data-original="{% static 'img/art.jpg' %}" alt="应该选" />
+					</a>
+					<h4 class="title"><a href="/article/{{ a.id }}">{{ a.title }}</a></h4>
+					<div class="date_hits">
+						<span>{{ a.auther }}</span>
+						<span>{{ a.creat_time }}</span>
+						<span>{{ a.get_column_display}}</span>
+						<p class="hits"><i class="Hui-iconfont" title="点击量">&#xe6c1;</i> {{ a.read_times }} </p>
+						<p class="commonts"><i class="Hui-iconfont" title="点击量">&#xe622;</i> <span class="cy_cmt_count">{{ a.sum_up }}</span></p>
+					</div>
+					<div class="desc">{{ a.summary }}</div>
+				</li>
+                {% else %}
+				<li class="index_arc_item no_pic">
+					<h4 class="title"><a href="/article/{{ a.id }}">{{ a.title }}</a></h4>
+					<div class="date_hits">
+						<span>{{ a.auther }}</span>
+						<span>{{ a.creat_time }}</span>
+						<span>{{ a.get_column_display }}</span>
+						<p class="hits"><i class="Hui-iconfont" title="点击量">&#xe6c1;</i>{{ a.read_times }}</p>
+						<p class="commonts"><i class="Hui-iconfont" title="点击量">&#xe622;</i> <span id="sourceId::105" class="cy_cmt_count">{{ a.sum_up }}</span></p>
+					</div>
+					<div class="desc">{{ a.summary }}</div>
+				</li>
+                {% endif %}
+				</ul>
+      {% endfor %}
+  </div>
+{% endblock left %}
+  
+{% block right %}
+  <div class="col-sm-3 col-md-3 mt-20">
+  	
+  	<!--导航-->
+  	<div class="panel panel-primary mb-20">
+			<div class="panel-body">
+				<input class="btn btn-primary radius nav-btn" type="button" value="建站">
+				<input class="btn btn-primary-outline radius nav-btn" type="button" value="框架">
+				<input class="btn btn-primary-outline radius nav-btn" type="button" value="前端">
+				<input class="btn btn-primary-outline radius nav-btn" type="button" value="数据库">
+                <input class="btn btn-primary-outline radius nav-btn" type="button" value="趣谈">
+				<input class="btn btn-primary-outline radius nav-btn" type="button" value="生活">
+			</div>
+		</div>
+  	
+  	<!--热门推荐-->
+  	<div class="bg-fff box-shadow radius mb-20">
+			<div class="tab-category">
+				<a href=""><strong>热门推荐</strong></a>
+			</div>
+			<div class="tab-category-item">
+				<ul class="index_recd">
+                    {% for h in hot %}
+					<li>
+						<a href="/article/{{ h.id }}">{{ h.title }}</a>
+						<p class="hits"><i class="Hui-iconfont" title="点击量">&#xe6c1;</i>{{ h.read_times }}</p>
+					</li>
+                    {% endfor %}
+				</ul>
+			</div>
+		</div>
+	
+    <!--标签-->
+	<div class="bg-fff box-shadow radius mb-20">
+		<div class="tab-category">
+			<a href=""><strong>标签云</strong></a>
+		</div>
+		<div class="tab-category-item">
+			<div class="tags"> <a href="http://www.h-ui.net/">H-ui前端框架</a> <a href="http://www.h-ui.net/websafecolors.shtml">Web安全色</a> <a href="http://www.h-ui.net/Hui-4.4-Unslider.shtml">jQuery轮播插件</a> <a href="http://idc.likejianzhan.com/vhost/korea_hosting.php">韩国云虚拟主机</a> <a href="http://www.h-ui.net/bug.shtml">IEbug</a> <a href="http://www.h-ui.net/site.shtml">IT网址导航</a> <a href="http://www.h-ui.net/icon/index.shtml">网站常用小图标</a> <a href="http://www.h-ui.net/tools/jsformat.shtml">web工具箱</a> <a href="http://www.h-ui.net/bg/index.shtml">网站常用背景素材</a> <a href="http://www.h-ui.net/yuedu/chm.shtml">H-ui阅读</a> <a href="http://www.h-ui.net/easydialog-v2.0/index.html">弹出层插件</a> <a href="http://www.h-ui.net/SuperSlide2.1/demo.html">SuperSlide插件</a> <a href="http://www.h-ui.net/TouchSlide1.1/demo.html">TouchSlide</a></div>
+		</div>
+	</div>
+  </div>
+{% endblock right %}
+
+{% block bottom_js %}{% endblock bottom_js %}
+
+{% block file_js %}
+<script>
+$(function(){
+//标签
+	$(".tags a").each(function(){
+		var x = 9;
+		var y = 0;
+		var rand = parseInt(Math.random() * (x - y + 1) + y);
+		$(this).addClass("tags"+rand)
+	});
+	
+	$("img.lazyload").lazyload({failurelimit : 3});
+});
+</script>
+{% endblock file_js %}
+
