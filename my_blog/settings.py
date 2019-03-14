@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*0e6!5nq_-x$*uh_vccc=fdly$zv-bu8+zkstmlk2im@01t0bt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -140,6 +140,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = '/www/my_blog/static'
 
 # 发送邮件配置
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
