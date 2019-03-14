@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 # 在任务处理者一端加
 import os
 import django
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "blog.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "my_blog.settings")
 django.setup()
 
 # 创建celery类的对象

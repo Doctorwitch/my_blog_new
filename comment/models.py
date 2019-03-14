@@ -17,6 +17,9 @@ class CommentManage(BaseModel):
         verbose_name = '博客评论类'
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.user_id
+
 
 
 

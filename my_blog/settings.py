@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'comment',
     'mood',
     'user',
+    'article.templatetags',
+    # 'mood.templatetags',
+    # 'user.templatetags',
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -123,6 +127,9 @@ TIME_ZONE = 'Asia/Shanghai'
 USE_I18N = True
 
 USE_L10N = True
+# USE_L10N = False
+# DATA_FORMT = 'Y年m月d'
+# DATATIME_FORMAT = 'Y年m月d H:i:s'
 
 USE_TZ = True
 

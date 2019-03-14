@@ -22,8 +22,9 @@
         <!--用于评论-->
         <form action="" method="post">
             {% csrf_token %}
+
         <div class="mt-20" id="ct">
-            <div id="err" class="Huialert Huialert-danger hidden radius">成功状态提示</div>
+            <div id="err" class="Huialert Huialert-danger hidden radius" name="primary_comment">1</div>
             <textarea id="textarea1" name="comment" style="height:200px;" placeholder="评论请不要超过256个字符"> </textarea>
             <div class="text-r mt-10">
                 <input type="submit" class="btn btn-primary radius" value="发表评论">
@@ -36,7 +37,7 @@
         <ul class="commentList mt-50">
             {% for comm in comment %}
             {% autoescape off %}
-            <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="http://q.qlogo.cn/qqapp/101388738/1CF8425D24660DB8C3EBB76C03D95F35/100"></i></a>
+            <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="{% static 'img/boluotou.jpeg' %}"></i></a>
                 <div class="comment-main">
                     <header class="comment-header">
                         <div class="comment-meta"><a class="comment-author">{{ comm.user_id }}</a>
@@ -46,22 +47,22 @@
                     <div class="comment-body">
                         {{ comm.comment }}
 
-                        <ul class="commentList">
-                            <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="http://qzapp.qlogo.cn/qzapp/101388738/1CF8425D24660DB8C3EBB76C03D95F35/100"></i></a>
-                                <div class="comment-main">
-                                    <header class="comment-header">
-                                        <div class="comment-meta"><a class="comment-author" href="#">老王</a>
-                                            <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20" class="f-r">2014-8-31 15:20</time>
-                                        </div>
-                                    </header>
-                                    <div class="comment-body">
-                                        <p> 是的</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+{#                        <ul class="commentList">#}
+{#                            <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="http://qzapp.qlogo.cn/qzapp/101388738/1CF8425D24660DB8C3EBB76C03D95F35/100"></i></a>#}
+{#                                <div class="comment-main">#}
+{#                                    <header class="comment-header">#}
+{#                                        <div class="comment-meta"><a class="comment-author" href="#">'+comment_dict.user_id__username+'</a>#}
+{#                                            <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20" class="f-r">'+comment_dict.creat_time+'</time>#}
+{#                                        </div>#}
+{#                                    </header>#}
+{#                                    <div class="comment-body">#}
+{#                                        <p> '+comment_dict.comment+'</p>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </li>#}
+{#                        </ul>#}
 
-                        <button class="hf f-r btn btn-default size-S mt-10" name="2">回复</button>
+{#                        <button class="hf f-r btn btn-default size-S mt-10" >回复</button>#}
 
                     </div>
                 </div>
@@ -70,9 +71,14 @@
             {% endfor %}
 
         </ul>
+        <ul class="commentList mt-50" id="comment_tree">
+
+
+        </ul>
+
         <!--用于回复-->
         <div class="comment hidden mt-20">
-            <div id="err2" class="Huialert Huialert-danger hidden radius">成功状态提示</div>
+            <div id="err2" class="Huialert Huialert-danger hidden radius" name="primary_comment">2</div>
             <textarea class="textarea" style="height:100px;" > </textarea>
             <button onclick="hf(this);" type="button" class="btn btn-primary radius mt-10">回复</button>
             <a class="cancelReply f-r mt-10">取消回复</a>
@@ -88,6 +94,29 @@
 
 {% block file_js %}
 <script type="text/javascript">
+    //获取评论数据，展示评论书
+    {#$.ajax({#}
+    {#    url:'/comment/comment_tree',#}
+    {#    success:function (data) {#}
+    {#        console.log(data);#}
+    {#        $.each(data, function (index, comment_dict) {#}
+    {#            if(comment_dict.parent_comment){#}
+    {#                //子评论处理#}
+    {#                var s = '<ul class="commentList"> <li class="item cl commentList"> <a href="#"><i class="avatar size-L radius"><img alt="" src="http://qzapp.qlogo.cn/qzapp/101388738/1CF8425D24660DB8C3EBB76C03D95F35/100"></i></a> <div class="comment-main"> <header class="comment-header"> <div class="comment-meta"><a class="comment-author" href="#">'+comment_dict.user_id__username+'</a> <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20" class="f-r">'+comment_dict.creat_time+'</time> </div> </header> <div class="comment-body"> <p> '+comment_dict.comment+'</p> </div> </div> </li> </ul>'#}
+    {#                $('#'+comment_dict.parent_comment+'').append(s)#}
+    {#            }#}
+    {#            else{#}
+    {#                //根评论处理#}
+    {#                var s = '<li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="http://q.qlogo.cn/qqapp/101388738/1CF8425D24660DB8C3EBB76C03D95F35/100"></i></a> <div class="comment-main"> <header class="comment-header"> <div class="comment-meta"><a class="comment-author">'+comment_dict.user_id__username+'</a> <div class="f-r">'+comment_dict.creat_time+'</div> </div> </header> <div class="comment-body" id="'+comment_dict.id+'"> '+comment_dict.comment+' </div> </div> </li>'#}
+    {#                $('#comment_tree').append(s)#}
+    {#            }#}
+    {##}
+    {##}
+    {#        })#}
+    {#    }#}
+    {# });#}
+    {##}
+
     $(function () {
         wangEditor.config.printLog = false;
         var editor1 = new wangEditor('textarea1');
